@@ -5,32 +5,38 @@ const projects = [
   {
     image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=1169&auto=format&fit=crop',
     title: 'Residential Wiring Installation',
-    category: 'Residential'
+    category: 'Residential',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_1/'
   },
   {
     image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=1170&auto=format&fit=crop',
     title: 'Commercial Panel Upgrade',
-    category: 'Commercial'
+    category: 'Commercial',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_2/'
   },
   {
     image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1170&auto=format&fit=crop',
     title: 'Industrial Electrical Systems',
-    category: 'Industrial'
+    category: 'Industrial',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_3/'
   },
   {
     image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1170&auto=format&fit=crop',
     title: 'Emergency Power Solutions',
-    category: 'Emergency'
+    category: 'Emergency',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_4/'
   },
   {
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1170&auto=format&fit=crop',
     title: 'Smart Home Integration',
-    category: 'Smart Home'
+    category: 'Smart Home',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_5/'
   },
   {
     image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1170&auto=format&fit=crop',
     title: 'Lighting Installation',
-    category: 'Lighting'
+    category: 'Lighting',
+    instagramUrl: 'https://www.instagram.com/p/YOUR_POST_ID_6/'
   }
 ];
 ---
@@ -58,6 +64,7 @@ const projects = [
             image={project.image}
             title={project.title}
             category={project.category}
+            instagramUrl={project.instagramUrl}
           />
         ))}
         <!-- Duplicate slides for infinite loop -->
@@ -66,6 +73,7 @@ const projects = [
             image={project.image}
             title={project.title}
             category={project.category}
+            instagramUrl={project.instagramUrl}
           />
         ))}
       </div>
