@@ -1,0 +1,213 @@
+---
+---
+
+<div id="offer-modal" class="fixed inset-0 backdrop-blur-lg bg-black/50 z-[100] hidden items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden relative animate-fade-in shadow-2xl">
+    <!-- Close Button -->
+    <button 
+      id="close-modal"
+      class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors z-50 shadow-lg"
+      aria-label="Close offer modal"
+    >
+      <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <!-- Hero Image Section -->
+    <div class="relative h-48 overflow-hidden">
+      <img 
+        src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?q=60&w=600&auto=format&fit=crop"
+        alt="Electrical services background"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+        <div class="bg-[#F4C430] px-4 py-1 rounded-full mb-2">
+          <p class="font-bold text-xs uppercase tracking-wide text-black">Exclusive Offer</p>
+        </div>
+        <h2 class="text-2xl font-bold mb-1">Special Electrical Offer</h2>
+        <p class="text-base">Special discounts available now</p>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="p-6">
+      <h3 class="text-2xl font-bold text-black mb-3 text-center">Expert Electrical Services</h3>
+      <p class="text-gray-600 text-center mb-6 text-base">
+        Expert electricians ready to help with installations, repairs, and emergency services. Quality work guaranteed.
+      </p>
+
+      <!-- Countdown Timer -->
+      <div class="mb-6 py-6 border-y border-gray-200">
+        <p class="text-center font-black text-black uppercase tracking-wider mb-4" style="font-size: 20px;">Offer Ends In</p>
+        <div class="grid grid-cols-4 gap-3">
+          <div class="text-center bg-gradient-to-br from-[#F4C430] to-[#e5b52a] rounded-lg p-3 overflow-hidden">
+            <div class="countdown-flip">
+              <p id="countdown-days" class="text-3xl font-black text-black transition-all duration-500">00</p>
+            </div>
+            <p class="text-black text-xs uppercase font-bold mt-1">Days</p>
+          </div>
+          <div class="text-center bg-gradient-to-br from-[#F4C430] to-[#e5b52a] rounded-lg p-3 overflow-hidden">
+            <div class="countdown-flip">
+              <p id="countdown-hours" class="text-3xl font-black text-black transition-all duration-500">00</p>
+            </div>
+            <p class="text-black text-xs uppercase font-bold mt-1">Hours</p>
+          </div>
+          <div class="text-center bg-gradient-to-br from-[#F4C430] to-[#e5b52a] rounded-lg p-3 overflow-hidden">
+            <div class="countdown-flip">
+              <p id="countdown-minutes" class="text-3xl font-black text-black transition-all duration-500">00</p>
+            </div>
+            <p class="text-black text-xs uppercase font-bold mt-1">Minutes</p>
+          </div>
+          <div class="text-center bg-gradient-to-br from-[#F4C430] to-[#e5b52a] rounded-lg p-3 overflow-hidden">
+            <div class="countdown-flip">
+              <p id="countdown-seconds" class="text-3xl font-black text-black transition-all duration-500">00</p>
+            </div>
+            <p class="text-black text-xs uppercase font-bold mt-1">Seconds</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="space-y-3">
+        <a 
+          href="tel:+12345678912" 
+          class="block w-full bg-[#F4C430] text-black text-center py-3 font-bold text-base hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 rounded-none shadow-[8px_8px_0_0_rgba(0,0,0,1)] hover:shadow-[8px_8px_0_0_rgba(244,196,48,1)]"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Call Now: +(234) 567 8912
+        </a>
+        <button 
+          id="maybe-later-btn"
+          class="w-full text-center text-gray-500 hover:text-gray-700 transition-colors cursor-pointer mt-2"
+          style="font-size: 13px;"
+        >
+          No thanks, I'll pass
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('offer-modal');
+  const closeBtn = document.getElementById('close-modal');
+  const maybeLaterBtn = document.getElementById('maybe-later-btn');
+  
+  // Store previous values to detect changes
+  let prevDays = '00', prevHours = '00', prevMinutes = '00', prevSeconds = '00';
+  
+  // Function to update countdown with animation
+  function updateCountdownValue(elementId: string, newValue: string, prevValue: string) {
+    const element = document.getElementById(elementId);
+    if (element && newValue !== prevValue) {
+      // Add flip animation
+      element.style.transform = 'translateY(-100%)';
+      element.style.opacity = '0';
+      
+      setTimeout(() => {
+        element.textContent = newValue;
+        element.style.transform = 'translateY(100%)';
+        
+        setTimeout(() => {
+          element.style.transform = 'translateY(0)';
+          element.style.opacity = '1';
+        }, 50);
+      }, 250);
+    } else if (element) {
+      element.textContent = newValue;
+    }
+  }
+  
+  // Countdown Timer - Set to 24 hours from now
+  function startCountdown() {
+    const countdownEnd = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours from now
+    
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownEnd - now;
+      
+      if (distance < 0) {
+        clearInterval(timer);
+        updateCountdownValue('countdown-days', '00', prevDays);
+        updateCountdownValue('countdown-hours', '00', prevHours);
+        updateCountdownValue('countdown-minutes', '00', prevMinutes);
+        updateCountdownValue('countdown-seconds', '00', prevSeconds);
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      const newDays = String(days).padStart(2, '0');
+      const newHours = String(hours).padStart(2, '0');
+      const newMinutes = String(minutes).padStart(2, '0');
+      const newSeconds = String(seconds).padStart(2, '0');
+      
+      updateCountdownValue('countdown-days', newDays, prevDays);
+      updateCountdownValue('countdown-hours', newHours, prevHours);
+      updateCountdownValue('countdown-minutes', newMinutes, prevMinutes);
+      updateCountdownValue('countdown-seconds', newSeconds, prevSeconds);
+      
+      prevDays = newDays;
+      prevHours = newHours;
+      prevMinutes = newMinutes;
+      prevSeconds = newSeconds;
+    }, 1000);
+  }
+  
+  // Start countdown when page loads
+  startCountdown();
+  
+  // Show modal after 3 seconds on page load (only once)
+  let modalShown = false;
+  setTimeout(() => {
+    if (modal && !modalShown) {
+      modalShown = true;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+  }, 3000);
+  
+  // Close modal handler
+  function closeModal() {
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  }
+  
+  closeBtn?.addEventListener('click', closeModal);
+  maybeLaterBtn?.addEventListener('click', closeModal);
+  
+  // Close on outside click
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+</style>

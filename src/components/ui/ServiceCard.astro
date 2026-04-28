@@ -1,0 +1,46 @@
+---
+interface Props {
+  name: string;
+  image: string;
+  description?: string;
+  icon?: string;
+  link?: string;
+}
+
+const { name, image, description = "Professional electrical services for your needs", icon, link } = Astro.props;
+const CardWrapper = link ? 'a' : 'div';
+---
+
+<CardWrapper 
+  href={link}
+  class="group cursor-pointer relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-500 block"
+>
+  <!-- Image (keeps square aspect ratio) -->
+  <div class="w-full aspect-square overflow-hidden bg-gray-200">
+    <img 
+      src={image} 
+      alt={name}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  
+  <!-- Default Bottom Label (Always visible) -->
+  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#F4C430] via-[#F4C430]/95 to-[#F4C430]/80 py-4 px-4 flex items-center gap-2 z-10 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
+    {icon && (
+      <div class="w-5 h-5 flex-shrink-0" set:html={icon.replace('data:image/svg+xml,', '').replace(/%3C/g, '<').replace(/%3E/g, '>').replace(/%22/g, '"').replace(/%20/g, ' ').replace(/%3D/g, '=').replace(/%2F/g, '/')} />
+    )}
+    <h4 class="font-black text-black text-[16px] leading-tight">{name}</h4>
+  </div>
+  
+  <!-- Hover Overlay - Slides from bottom to top with enhanced effects -->
+  <div class="absolute inset-0 bg-gradient-to-t from-[#F4C430] via-[#F4C430]/95 to-[#F4C430]/80 translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-out flex flex-col items-start justify-center px-8 z-20">
+    <!-- Decorative line -->
+    <div class="w-16 h-1 bg-black mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"></div>
+    
+    <h4 class="font-black text-black text-left text-[20px] mb-4 leading-tight opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 transform translate-y-4 group-hover:translate-y-0">{name}</h4>
+    
+    <p class="text-black text-left text-[15px] font-semibold leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 transform translate-y-4 group-hover:translate-y-0">{description}</p>
+  </div>
+</CardWrapper>

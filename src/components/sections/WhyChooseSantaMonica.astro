@@ -1,0 +1,166 @@
+---
+// Why Choose Santa Monica Section
+const services = [
+  {
+    number: '01',
+    title: 'Local Santa Monica Team',
+    description: 'Our electricians live and work in Santa Monica, providing fast response times and understanding of local building codes and regulations.',
+    align: 'left'
+  },
+  {
+    number: '02',
+    title: 'Beachfront Specialists',
+    description: 'Specialized knowledge in handling electrical systems for beachfront properties, including salt-air corrosion prevention and moisture protection.',
+    align: 'left'
+  },
+  {
+    number: '03',
+    title: 'Same-Day Service',
+    description: 'Emergency electrical services with rapid response throughout Santa Monica. We prioritize urgent calls and offer flexible scheduling.',
+    align: 'left'
+  },
+  {
+    number: '04',
+    title: 'Fully Licensed & Insured',
+    description: 'All our electricians are California state-licensed with complete insurance coverage, ensuring your property and investment are fully protected.',
+    align: 'right'
+  },
+  {
+    number: '05',
+    title: 'Smart Home Integration',
+    description: 'Expert installation of smart home systems, EV chargers, and energy-efficient solutions perfect for Santa Monica\'s eco-conscious community.',
+    align: 'right'
+  },
+  {
+    number: '06',
+    title: 'Transparent Pricing',
+    description: 'Upfront, honest pricing with detailed free estimates before we start. No hidden fees or surprise charges for Santa Monica residents.',
+    align: 'right'
+  }
+];
+
+const leftServices = services.filter(s => s.align === 'left');
+const rightServices = services.filter(s => s.align === 'right');
+---
+
+<section class="relative bg-[#F8F8F8] pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <p class="text-[#F4C430] font-semibold text-lg flex items-center justify-center gap-2 mb-2">
+        <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        Local Expertise
+      </p>
+      <h2 class="heading-h2 font-bold text-black mb-4" style="font-size: 63px; white-space: nowrap;">
+        Why Choose Our Santa Monica Services
+      </h2>
+      <p class="text-gray-700 leading-relaxed max-w-5xl mx-auto text-subtitle mb-20">
+        We understand Santa Monica's unique electrical needs, from coastal properties to modern smart homes. Our local expertise ensures reliable, code-compliant solutions.
+      </p>
+    </div>
+
+    <!-- Three Column Layout: Left Services - Center Image - Right Services -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-5 items-start">
+      <!-- Left Column - Services 01-03 -->
+      <div class="space-y-12">
+        {leftServices.map((service) => (
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <span class="text-[#F4C430] font-bold text-3xl">{service.number}.</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-black mb-2" style="font-size: 25px;">{service.title}</h3>
+              <p class="text-gray-600 leading-relaxed text-base">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Center Image -->
+      <div class="flex justify-center lg:mx-4">
+        <img 
+          src="/lights.png" 
+          alt="Modern Electrical Pendant Lighting" 
+          class="w-full max-w-[400px] h-auto object-contain"
+        />
+      </div>
+
+      <!-- Right Column - Services 04-06 -->
+      <div class="space-y-12">
+        {rightServices.map((service) => (
+          <div class="flex gap-4">
+            <div>
+              <h3 class="font-bold text-black mb-2 text-right" style="font-size: 25px;">{service.title}</h3>
+              <p class="text-gray-600 leading-relaxed text-base text-right">
+                {service.description}
+              </p>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="text-[#F4C430] font-bold text-3xl">{service.number}.</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Animate header
+  const header = document.querySelector('.text-center.mb-12');
+  if (header) {
+    header.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+    observer.observe(header);
+  }
+
+  // Animate left column service items
+  const leftColumn = document.querySelectorAll('.space-y-12')[0];
+  if (leftColumn) {
+    leftColumn.querySelectorAll('.flex.gap-4').forEach((item, index) => {
+      if (item instanceof HTMLElement) {
+        item.classList.add('opacity-0', '-translate-x-8', 'transition-all', 'duration-700');
+        item.style.transitionDelay = `${index * 150}ms`;
+        observer.observe(item);
+      }
+    });
+  }
+
+  // Animate center image
+  const centerImage = document.querySelector('.flex.justify-center.lg\\:mx-4');
+  if (centerImage instanceof HTMLElement) {
+    centerImage.classList.add('opacity-0', 'scale-90', 'transition-all', 'duration-1000');
+    centerImage.style.transitionDelay = '300ms';
+    observer.observe(centerImage);
+  }
+
+  // Animate right column service items
+  const rightColumn = document.querySelectorAll('.space-y-12')[1];
+  if (rightColumn) {
+    rightColumn.querySelectorAll('.flex.gap-4').forEach((item, index) => {
+      if (item instanceof HTMLElement) {
+        item.classList.add('opacity-0', 'translate-x-8', 'transition-all', 'duration-700');
+        item.style.transitionDelay = `${index * 150}ms`;
+        observer.observe(item);
+      }
+    });
+  }
+</script>

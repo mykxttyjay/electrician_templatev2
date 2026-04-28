@@ -1,0 +1,89 @@
+---
+interface Props {
+  variant?: "primary" | "secondary" | "accent" | "outline" | "coupon" | "couponDark" | "couponWhite";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+  disabled?: boolean;
+  icon?: boolean;
+}
+
+const {
+  variant = "accent",
+  size = "md",
+  href,
+  type = "button",
+  class: className,
+  disabled = false,
+  icon = false,
+} = Astro.props;
+
+const baseStyles = variant === "coupon" || variant === "couponDark" || variant === "couponWhite" || variant === "secondary"
+  ? "font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105" 
+  : "font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[8px_8px_0_rgba(0,0,0,0.8)]";
+
+const variants = {
+  primary: "bg-[#F4C430] text-black hover:bg-black hover:text-[#F4C430] hover:shadow-[10px_10px_0_rgba(244,196,48,0.8)]",
+  secondary: "bg-transparent text-white border-2 border-white hover:bg-white hover:text-black",
+  accent: "bg-[#F4C430] text-black hover:bg-black hover:text-[#F4C430] hover:shadow-[10px_10px_0_rgba(244,196,48,0.8)]",
+  outline: "border-2 border-[#F4C430] text-[#F4C430] bg-transparent hover:bg-[#F4C430] hover:text-black hover:shadow-[8px_8px_0_rgba(244,196,48,0.8)]",
+  coupon: "bg-[#F4C430] text-black hover:bg-black hover:text-[#F4C430] shadow-none",
+  couponDark: "bg-black text-[#F4C430] hover:bg-white hover:text-black shadow-none",
+  couponWhite: "bg-[#F4C430] text-black hover:bg-white hover:text-black shadow-none",
+};
+
+const sizes = {
+  sm: "px-6 py-2 text-base",
+  md: "px-12 py-4 text-lg flex items-center justify-center",
+  lg: "px-8 h-[65px] text-[20px] flex items-center justify-center",
+};
+
+const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
+
+const buttonClass = `${baseStyles} ${variants[variant]} ${sizes[size]} ${disabledStyles} ${className || ""}`;
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  class={buttonClass}
+  {...href ? {} : { type }}
+  {...disabled ? { disabled: true } : {}}
+>
+  <span class="flex items-center justify-center gap-3 w-full">
+    <slot />
+    {icon && (
+      <svg
+        class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13 7l5 5m0 0l-5 5m5-5H6"
+        />
+      </svg>
+    )}
+  </span>
+</Tag>
+
+<style>
+  a,
+  button {
+    border-radius: 0 !important;
+  }
+
+  button:disabled {
+    pointer-events: none;
+  }
+
+  a:hover svg,
+  button:hover:not(:disabled) svg {
+    transform: translateX(4px);
+  }
+</style>

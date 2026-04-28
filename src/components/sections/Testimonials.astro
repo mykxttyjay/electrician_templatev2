@@ -1,0 +1,368 @@
+---
+// Import all testimonial markdown files
+const testimonialFiles = import.meta.glob('../content/testimonials/testimonial-*.md', { eager: true });
+const testimonials = Object.values(testimonialFiles).map((file: any) => {
+
+  const rawContent = file.rawContent ? file.rawContent() : '';
+  const cleanText = rawContent.replace(/^---[\s\S]*?---\n/, '').trim(); 
+  
+  return {
+    name: file.frontmatter.name,
+    role: file.frontmatter.role,
+    image: file.frontmatter.image,
+    text: cleanText
+  };
+});
+---
+
+<section class="relative bg-[#F8F8F8] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="mb-8 text-center testimonials-header">
+      <p class="text-[#F4C430] font-semibold text-lg flex items-center justify-center gap-2">
+        <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+        </svg>
+        Testimonials
+      </p>
+      <h2 class="heading-h2 font-bold text-black mb-3">What Our Clients Say</h2>
+      <p class="text-gray-700 leading-relaxed max-w-3xl mx-auto text-subtitle">
+        Hear from our satisfied customers about their experience with our professional electrical services and dedicated team.
+      </p>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="relative testimonials-carousel">
+      <div class="testimonial-carousel overflow-hidden">
+        <div class="testimonial-track flex transition-transform duration-500 ease-in-out">
+          {testimonials.map((testimonial) => (
+          <div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+            <div class="relative pt-12">
+              <!-- Profile Image - Positioned outside card -->
+              <div class="absolute top-0 left-8 z-10">
+                <img 
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
+              
+              <!-- Speech Bubble Card -->
+              <div class="bg-white rounded-2xl p-6 pt-14 relative">
+                <!-- Quotation Mark - Right Side Inside Card -->
+                <div class="absolute top-2 right-6">
+                  <svg class="w-16 h-16 text-gray-300 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+                <!-- Name and Stars -->
+                <div class="mb-3">
+                  <h3 class="text-lg font-bold text-black mb-1">{testimonial.name}</h3>
+                  <div class="flex gap-1">
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Testimonial Text -->
+                <p class="text-gray-600 leading-relaxed text-base">
+                  "{testimonial.text}"
+                </p>
+                
+                <!-- Speech Bubble Tail -->
+                <div class="absolute -bottom-3 left-12 w-6 h-6 bg-white transform rotate-45"></div>
+              </div>
+            </div>
+          </div>
+          ))}
+          <!-- Duplicate slides for infinite loop -->
+          {testimonials.map((testimonial) => (
+          <div class="testimonial-slide min-w-full md:min-w-[33.333%] px-4">
+            <div class="relative pt-12">
+              <!-- Profile Image - Positioned outside card -->
+              <div class="absolute top-0 left-8 z-10">
+                <img 
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
+              
+              <!-- Speech Bubble Card -->
+              <div class="bg-white rounded-2xl p-6 pt-14 relative">
+                <!-- Quotation Mark - Right Side Inside Card -->
+                <div class="absolute top-2 right-6">
+                  <svg class="w-16 h-16 text-gray-300 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+                <!-- Name and Stars -->
+                <div class="mb-3">
+                  <h3 class="text-lg font-bold text-black mb-1">{testimonial.name}</h3>
+                  <div class="flex gap-1">
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Testimonial Text -->
+                <p class="text-gray-600 leading-relaxed text-base">
+                  "{testimonial.text}"
+                </p>
+                
+                <!-- Speech Bubble Tail -->
+                <div class="absolute -bottom-3 left-12 w-6 h-6 bg-white transform rotate-45"></div>
+              </div>
+            </div>
+          </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Dots Navigation -->
+      <div class="flex justify-center mt-12 gap-2">
+        {testimonials.map((_, index) => (
+        <button 
+          class="carousel-dot h-1 w-12 transition-all duration-300"
+          data-index={index}
+          aria-label={`Go to testimonial ${index + 1}`}
+        >
+          <span class={`block w-full h-full ${index === 0 ? 'bg-[#F4C430]' : 'bg-gray-300'}`}></span>
+        </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Logo Carousel -->
+    <div class="mt-12 px-3 testimonials-logos">
+      <!-- Heading -->
+      <h3 class="text-center text-lg text-gray-700 mb-8">
+        Certified, Licensed & Trusted by Leading Industry Organizations
+      </h3>
+      
+      <div class="overflow-hidden relative">
+        <!-- Left gradient -->
+        <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8F8F8] to-transparent z-10 pointer-events-none"></div>
+        <!-- Right gradient -->
+        <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#F8F8F8] to-transparent z-10 pointer-events-none"></div>
+        
+        <div class="logo-track flex items-center gap-40 animate-scroll">
+          <!-- First set of logos -->
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/bbb-logo.png" alt="BBB Accredited" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/google-reviews.webp" alt="Google Reviews" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/licensed-insured.png" alt="Licensed & Insured" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/24-7-service.png" alt="24/7 Service" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/angi-certified.png" alt="Angi Certified" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/certified.png" alt="Angie's List" class="max-h-16 w-auto object-contain" />
+          </div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/bbb-logo.png" alt="BBB Accredited" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/google-reviews.webp" alt="Google Reviews" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/licensed-insured.png" alt="Licensed & Insured" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/24-7-service.png" alt="24/7 Service" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/angi-certified.png" alt="Angi Certified" class="max-h-16 w-auto object-contain" />
+          </div>
+          <div class="h-20 flex items-center justify-center opacity-60 flex-shrink-0">
+            <img src="/certified.png" alt="Angie's List" class="max-h-16 w-auto object-contain" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-header {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .testimonials-carousel {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .testimonials-carousel.animate {
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .testimonials-logos {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .testimonials-logos.animate {
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 10s linear infinite;
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const testimonialsObserverOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const testimonialsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        testimonialsObserver.unobserve(entry.target);
+      }
+    });
+  }, testimonialsObserverOptions);
+
+  // Observe testimonials elements
+  const testimonialsCarousel = document.querySelector('.testimonials-carousel');
+  const testimonialsLogos = document.querySelector('.testimonials-logos');
+  
+  if (testimonialsCarousel) testimonialsObserver.observe(testimonialsCarousel);
+  if (testimonialsLogos) testimonialsObserver.observe(testimonialsLogos);
+
+  // Carousel functionality
+  let currentIndex = 0;
+  const track = document.querySelector('.testimonial-track') as HTMLElement;
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  
+  // Determine slides per view based on screen size
+  function getSlidesPerView() {
+    return window.innerWidth >= 768 ? 3 : 1;
+  }
+  
+  const totalSlides = slides.length / 2; // Actual number of unique slides
+  
+  function updateCarousel(smooth = true) {
+    const slidesPerView = getSlidesPerView();
+    const offset = -(currentIndex * (100 / slidesPerView));
+    
+    if (smooth) {
+      track.style.transition = 'transform 500ms ease-in-out';
+    } else {
+      track.style.transition = 'none';
+    }
+    
+    track.style.transform = `translateX(${offset}%)`;
+    
+    // Update dots
+    const dotIndex = currentIndex % totalSlides;
+    dots.forEach((dot, index) => {
+      const dotSpan = dot.querySelector('span');
+      if (dotSpan) {
+        if (index === dotIndex) {
+          dotSpan.classList.remove('bg-gray-300');
+          dotSpan.classList.add('bg-[#F4C430]');
+        } else {
+          dotSpan.classList.remove('bg-[#F4C430]');
+          dotSpan.classList.add('bg-gray-300');
+        }
+      }
+    });
+  }
+  
+  function nextSlide() {
+    currentIndex++;
+    updateCarousel(true);
+    
+    // Reset to beginning when reaching duplicates
+    if (currentIndex >= totalSlides) {
+      setTimeout(() => {
+        currentIndex = 0;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+  
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel(true);
+    });
+  });
+  
+  // Auto-play carousel
+  let autoplayInterval = setInterval(nextSlide, 5000);
+  
+  // Pause on hover
+  const carousel = document.querySelector('.testimonial-carousel');
+  carousel?.addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+  });
+  
+  carousel?.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(nextSlide, 5000);
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => updateCarousel(true));
+  
+  // Initial update
+  updateCarousel(false);
+</script>

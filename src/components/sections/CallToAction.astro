@@ -1,0 +1,27 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="bg-[#1a1a1a] py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <!-- Left Side: Text Content -->
+      <div class="flex-1">
+        <h2 class="text-[58px] font-bold text-white mb-4 leading-tight">
+          Have Questions? <span class="text-[#F4C430]">+(234) 567 8912</span>
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed">
+          We provide the best team that can do anything for you. We have a reliable company & our work is trusted.
+        </p>
+      </div>
+
+      <!-- Right Side: CTA Button -->
+      <div class="flex-shrink-0">
+        <Button variant="accent" size="md" href="tel:+2345678912">
+          CALL US NOW
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+

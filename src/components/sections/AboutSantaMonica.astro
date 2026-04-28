@@ -1,0 +1,190 @@
+---
+import Button from '../ui/Button.astro';
+
+const cards = [
+  {
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+    title: "Local Expertise",
+    description: "Deep understanding of Santa Monica's electrical codes and building requirements."
+  },
+  {
+    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "Fast Response",
+    description: "Quick emergency service throughout Santa Monica and surrounding areas."
+  },
+  {
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    title: "Licensed & Insured",
+    description: "Fully certified electricians with comprehensive insurance coverage for your protection."
+  },
+  {
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "Competitive Pricing",
+    description: "Fair and transparent pricing with free estimates for all Santa Monica residents."
+  }
+];
+---
+
+<section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Top Section: Image and Text Side by Side -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start mb-10">
+      <!-- Left Side: Single Image -->
+      <div class="hidden lg:block relative h-full about-images opacity-0 animate-[fadeIn_0.8s_ease-out_forwards] ml-auto">
+        <div class="overflow-hidden shadow-xl rounded-lg about-image-1 opacity-0 -translate-x-[30px]" style="width: 600px; height: 560px;">
+          <img 
+            src="https://images.unsplash.com/photo-1646640381839-02748ae8ddf0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            alt="Santa Monica buildings" 
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <!-- Right Side: Text Content -->
+      <div class="space-y-4 about-content opacity-0">
+        <div class="relative">
+          <p class="text-[#e5b52a] font-semibold mb-2 flex items-center gap-2 relative z-10 text-lg">
+            <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+            </svg>
+            Santa Monica Services
+          </p>
+          <h2 class="heading-h2 font-bold text-black mb-4 relative z-10 leading-tight">Your Trusted<br><span class="whitespace-nowrap">Santa Monica</span><br>Electrician</h2>
+          <p class="text-gray-700 leading-relaxed relative z-10 text-[22px]">
+            Proudly serving Santa Monica for over 20 years, we understand the unique electrical needs of coastal properties and local businesses. From beachfront homes to commercial spaces on the Promenade, our certified electricians deliver reliable service.
+          </p>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="flex items-center about-button opacity-0 translate-y-5">
+          <Button href="/contact" variant="accent" size="md" icon={false}>
+            Contact Us Today
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section: Feature Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 about-cards opacity-0 translate-y-5">
+          {cards.map((card) => (
+            <div class="group border-2 border-gray-300 p-6 hover:border-[#F4C430] transition-all">
+              <div class="relative w-20 h-20 mb-4">
+                <!-- Dashed circle border with rotation animation -->
+                <div class="absolute inset-0 rounded-full border-4 border-dashed border-[#F4C430] opacity-30 group-hover:opacity-50 transition-opacity animate-spin-slow"></div>
+                <!-- Inner solid circle with icon -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-[#F4C430] group-hover:bg-black rounded-full flex items-center justify-center transition-colors">
+                    <svg class="w-6 h-6 text-black group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={card.icon}></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-black mb-2">{card.title}</h3>
+              <p class="text-gray-700">
+                {card.description}
+              </p>
+            </div>
+          ))}
+        </div>
+  </div>
+</section>
+
+<script>
+  // Counter animation for the experience card
+  const counter = document.querySelector('.counter');
+  if (counter) {
+    const target = parseInt(counter.getAttribute('data-target') || '0');
+    let current = 0;
+    const increment = target / 30;
+    const duration = 1000;
+    const stepTime = duration / 30;
+
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        counter.textContent = Math.floor(current) + '+';
+        setTimeout(updateCounter, stepTime);
+      } else {
+        counter.textContent = target + '+';
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateCounter();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(counter);
+  }
+
+  // Scroll animations
+  const aboutObserverOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add animation classes when element is visible
+        if (entry.target.classList.contains('about-images')) {
+          entry.target.querySelector('.about-image-1')?.classList.add('animate-[slideInLeft_0.8s_ease-out_0.2s_forwards]');
+        }
+        if (entry.target.classList.contains('about-content')) {
+          entry.target.classList.add('animate-[fadeIn_0.8s_ease-out_0.3s_forwards]');
+          entry.target.querySelector('.about-button')?.classList.add('animate-[fadeInUp_0.8s_ease-out_0.5s_forwards]');
+        }
+        if (entry.target.classList.contains('about-cards')) {
+          entry.target.classList.add('animate-[fadeInUp_0.8s_ease-out_0.7s_forwards]');
+        }
+        aboutObserver.unobserve(entry.target);
+      }
+    });
+  }, aboutObserverOptions);
+
+  const aboutImages = document.querySelector('.about-images');
+  const aboutContent = document.querySelector('.about-content');
+  const aboutCards = document.querySelector('.about-cards');
+  
+  if (aboutImages) aboutObserver.observe(aboutImages);
+  if (aboutContent) aboutObserver.observe(aboutContent);
+  if (aboutCards) aboutObserver.observe(aboutCards);
+</script>
+
+<style>
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes slideInLeft {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

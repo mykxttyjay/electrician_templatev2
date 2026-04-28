@@ -1,0 +1,206 @@
+---
+import Button from '../ui/Button.astro';
+
+const cards = [
+  {
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    title: "Reliable Solutions",
+    description: "Trusted electrical services backed by certified professionals and proven track record of excellence."
+  },
+  {
+    icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
+    title: "Dedicated to Quality",
+    description: "Every project meets highest standards with meticulous attention to detail and complete safety."
+  },
+  {
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "Partnering for Success",
+    description: "Building lasting relationships through exceptional service and reliable support for your specific needs."
+  }
+];
+---
+
+<section id="why-choose-us" class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-10">
+      <!-- Left Side -->
+      <div class="relative why-image">
+        <img 
+          src="https://images.unsplash.com/photo-1615774925655-a0e97fc85c14?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+          alt="Professional Electrician" 
+          class="w-full h-[525px] object-cover rounded-lg"
+        />
+      </div>
+
+      <!-- Right Side -->
+      <div class="why-content">
+        <p class="text-[#e5b52a] font-semibold mb-4 flex items-center gap-2" style="font-size: 18px;">
+          <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+          </svg>
+          Why Choose Us
+        </p>
+        
+        <h2 class="heading-h2 font-bold text-black mb-6" style="line-height: 1.2;">
+          Reliable Service<br>You Can Trust
+        </h2>
+        
+        <p class="text-gray-700 leading-relaxed mb-8" style="font-size: 22px;">
+          With decades of experience and commitment to excellence, we deliver electrical solutions that prioritize safety, reliability, and customer satisfaction.
+        </p>
+
+        <!-- Checkmarks -->
+        <div class="space-y-4 mb-8 why-checkmarks">
+          <div class="flex items-start gap-3 why-check-item" data-index="0">
+            <svg class="w-6 h-6 text-[#F4C430] flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <p class="text-gray-700" style="font-size: 16px;">Powered by years of industry experience and excellence.</p>
+          </div>
+          <div class="flex items-start gap-3 why-check-item" data-index="1">
+            <svg class="w-6 h-6 text-[#F4C430] flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <p class="text-gray-700" style="font-size: 16px;">Dedicated to providing safe and efficient electrical services.</p>
+          </div>
+        </div>
+
+        <!-- Contact Us Button -->
+        <div class="flex flex-wrap items-center gap-8 why-button">
+          <Button variant="accent" size="md" href="/contact" icon={false}>
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 why-cards">
+      {cards.map((card, index) => (
+      <div class="bg-[#FFF9E6] p-6 flex gap-4 rounded-lg why-card" data-card-index={index}>
+        <div class="flex-shrink-0">
+          <svg class="w-12 h-12 text-[#F4C430]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d={card.icon}/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-black mb-2">{card.title}</h3>
+          <p class="text-gray-700" style="font-size: 16px;">
+            {card.description}
+          </p>
+        </div>
+      </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-image {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .why-image.animate {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .why-content {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  .why-content.animate {
+    animation: slideInRight 0.8s ease-out 0.2s forwards;
+  }
+
+  .why-check-item {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .why-content.animate .why-check-item[data-index="0"] {
+    animation: slideInRight 0.6s ease-out 0.4s forwards;
+  }
+
+  .why-content.animate .why-check-item[data-index="1"] {
+    animation: slideInRight 0.6s ease-out 0.5s forwards;
+  }
+
+  .why-button {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .why-content.animate .why-button {
+    animation: fadeInUp 0.6s ease-out 0.6s forwards;
+  }
+
+  .why-card {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .why-cards.animate .why-card {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .why-cards.animate .why-card[data-card-index="0"] {
+    animation-delay: 0.2s;
+  }
+
+  .why-cards.animate .why-card[data-card-index="1"] {
+    animation-delay: 0.4s;
+  }
+
+  .why-cards.animate .why-card[data-card-index="2"] {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const whyObserverOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const whyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        whyObserver.unobserve(entry.target);
+      }
+    });
+  }, whyObserverOptions);
+
+  // Observe why choose us elements
+  const whyImage = document.querySelector('.why-image');
+  const whyContent = document.querySelector('.why-content');
+  const whyCards = document.querySelector('.why-cards');
+  
+  if (whyImage) whyObserver.observe(whyImage);
+  if (whyContent) whyObserver.observe(whyContent);
+  if (whyCards) whyObserver.observe(whyCards);
+</script>

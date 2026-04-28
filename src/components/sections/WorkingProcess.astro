@@ -1,0 +1,135 @@
+---
+const steps = [
+  {
+    number: '1',
+    icon: 'calendar',
+    title: 'Schedule Service',
+    description: 'Contact our team today to discuss your electrical needs.'
+  },
+  {
+    number: '2',
+    icon: 'team',
+    title: 'Meet Our Electrician',
+    description: 'Our professional & expert staff will meet you within 24 hrs.'
+  },
+  {
+    number: '3',
+    icon: 'wrench',
+    title: 'Fix The Problem',
+    description: 'We fix all your electrical problems with quality workmanship.'
+  },
+  {
+    number: '4',
+    icon: 'payment',
+    title: 'Complete Payment',
+    description: 'Pay only after your complete satisfaction with our service.'
+  }
+];
+---
+
+<section class="bg-[#1a1a1a] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="mb-10 text-center">
+      <div class="flex items-center justify-center gap-2 mb-1">
+        <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+        </svg>
+        <p class="text-[#F4C430] font-semibold text-lg">Working Process</p>
+      </div>
+      <h2 class="heading-h2 font-bold text-white mb-2">4 Easiest Ways to Fix</h2>
+      <p class="text-gray-300 leading-relaxed max-w-5xl mx-auto text-subtitle">
+        Electrixa is proud to be the name that nearly 1 million homeowners have trusted for home improvement and repair, providing virtually any home repair.
+      </p>
+    </div>
+
+    <!-- Steps Container -->
+    <div class="relative">
+      <!-- Connecting Dotted Line -->
+      <div class="hidden lg:block absolute top-[80px] left-0 right-0 h-px" style="background-image: linear-gradient(to right, #F4C430 50%, transparent 50%); background-size: 20px 1px; background-repeat: repeat-x;"></div>
+      
+      <!-- Arrow at the end -->
+      <div class="hidden lg:block absolute top-[65px] right-0">
+        <svg class="w-8 h-8 text-[#F4C430]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </div>
+
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map((step, index) => (
+          <div class="relative flex flex-col items-center text-center group">
+            <!-- Step Number Badge -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+              <div class="bg-[#F4C430] text-black font-black px-4 py-1 shadow-lg" style="font-size: 13px;">
+                STEP {step.number}
+              </div>
+            </div>
+
+            <!-- Icon Circle -->
+            <div class="relative mb-6">
+              <!-- Outer Dashed Circle (Rotating) -->
+              <div class="absolute inset-0 w-40 h-40 rounded-full border-2 border-dashed border-gray-600 animate-spin-slow"></div>
+              
+              <!-- Inner Content Container (Static) -->
+              <div class="relative w-40 h-40 flex items-center justify-center">
+                <!-- Inner Solid Circle -->
+                <div class="w-32 h-32 rounded-full bg-[#2a2a2a] flex items-center justify-center transition-all duration-300 group-hover:bg-[#F4C430]">
+                  {step.icon === 'calendar' && (
+                    <svg class="w-16 h-16 text-[#F4C430] group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                  )}
+                  {step.icon === 'team' && (
+                    <svg class="w-16 h-16 text-[#F4C430] group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                  )}
+                  {step.icon === 'wrench' && (
+                    <svg class="w-16 h-16 text-[#F4C430] group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  )}
+                  {step.icon === 'payment' && (
+                    <svg class="w-16 h-16 text-[#F4C430] group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#F4C430] transition-colors">
+              {step.title}
+            </h3>
+            <p class="text-gray-300 text-base leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+</style>

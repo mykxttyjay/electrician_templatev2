@@ -1,0 +1,36 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  category: string;
+}
+
+const { image, title, category } = Astro.props;
+---
+
+<div class="portfolio-slide flex-shrink-0 w-[280px] md:w-[335px]">
+  <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500">
+    <!-- Image -->
+    <div class="relative h-[350px] md:h-[400px] overflow-hidden">
+      <img 
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      <!-- Content -->
+      <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+        <span class="inline-block px-3 py-1 bg-[#F4C430] text-black text-xs font-bold uppercase tracking-wider mb-2">
+          {category}
+        </span>
+        <h3 class="text-white text-lg font-bold leading-tight">
+          {title}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

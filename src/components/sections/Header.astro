@@ -1,0 +1,527 @@
+---
+const serviceCategories = [
+  {
+    title: 'Commercial Electrical',
+    href: '/commercial-electrical',
+    services: [
+      { name: 'Ground-up Electrical Construction', href: '/ground-up-construction' },
+      { name: 'Emergency & Standby Power Systems', href: '#' },
+      { name: 'Commercial HVAC Electrical', href: '#' },
+      { name: 'Commercial Electrical Panels', href: '#' }
+    ]
+  },
+  {
+    title: 'Residential Electrical',
+    href: '#',
+    services: [
+      { name: 'Car Charging Stations/ EV', href: '#' },
+      { name: 'Ceiling Fan', href: '#' },
+      { name: 'GFCI Outlets', href: '#' },
+      { name: 'Backup Generators', href: '#' }
+    ]
+  },
+  {
+    title: 'Specialty Services',
+    href: '#',
+    services: [
+      { name: 'Holiday Lighting Installation', href: '#' },
+      { name: 'Landscape Lighting', href: '#' },
+      { name: 'Pool & Spa Electrical', href: '#' },
+      { name: 'Property Management', href: '#' }
+    ]
+  },
+  {
+    title: 'Emergency Services',
+    href: '#',
+    services: [
+      { name: '24-hour Emergency Service', href: '#' },
+      { name: 'HVAC', href: '#' },
+      { name: 'Heating', href: '#' },
+      { name: 'Water Heater', href: '#' }
+    ]
+  }
+];
+
+const serviceAreas = [
+  { name: 'Santa Monica', href: '/santa-monica' },
+  { name: 'Pasadena', href: '#' },
+  { name: 'Glendale', href: '#' },
+  { name: 'Beverly Hills', href: '#' }
+];
+---
+
+<!-- Top Bar with Contact Info -->
+<div id="top-contact-bar" class="hidden lg:block bg-[#F4C430] relative overflow-hidden transition-all duration-300">
+  <!-- Diagonal Dark Section on Right -->
+  <div class="absolute top-0 right-0 bottom-0 w-[45%] bg-black" style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1 py-2 relative z-10">
+    <div class="flex justify-between items-center">
+      <!-- Left Side: Location, Email, Time/Date -->
+      <div class="flex items-center gap-6">
+        <!-- Location -->
+        <a href="https://www.google.com/maps/search/?api=1&query=Los+Angeles,+CA" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 group cursor-pointer">
+          <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span class="text-black group-hover:text-white transition-colors font-semibold" style="font-size: 13px;">Los Angeles, California</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:info@electrixa.com" class="flex items-center gap-2 group cursor-pointer">
+          <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          <span class="text-black group-hover:text-white transition-colors font-semibold" style="font-size: 13px;">info@electrixa.com</span>
+        </a>
+
+        <!-- Office Hours -->
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+          </svg>
+          <span class="text-black font-semibold" style="font-size: 13px;">Mon-Fri: 8AM-6PM | Sat-Sun: 9AM-5PM</span>
+        </div>
+      </div>
+
+      <!-- Right Side: Specials & Financing Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Specials Button - Enhanced -->
+        <a href="/specials" class="inline-flex items-center gap-2 bg-black text-[#F4C430] font-black px-5 py-2.5 transition-all duration-300 hover:bg-[#F4C430] hover:text-black relative overflow-hidden group border-2 border-[#F4C430]">
+          <svg class="w-4 h-4 relative z-10 group-hover:rotate-[360deg] transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span class="relative z-10 text-xs tracking-wider font-black">SPECIALS</span>
+        </a>
+        
+        <!-- Financing Button - Enhanced -->
+        <a href="/financing" class="inline-flex items-center gap-2 bg-black text-[#F4C430] font-black px-5 py-2.5 transition-all duration-300 hover:bg-[#F4C430] hover:text-black relative overflow-hidden group border-2 border-[#F4C430]">
+          <svg class="w-4 h-4 relative z-10 group-hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="relative z-10 text-xs tracking-wider font-black">FINANCING</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Bar - Sticky -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-[100] shadow-md relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
+    <div class="flex justify-between items-center py-4 lg:py-2">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 lg:gap-3">
+        <img src="/electrixa.png" alt="Electrixa Logo" class="h-10 lg:h-12 object-contain" style="mix-blend-mode: multiply;"/>
+        <span class="font-bold text-black text-lg lg:text-[25px]">ELECTRIXA</span>
+      </a>
+      
+      <!-- Hamburger Menu Button (Mobile Only) -->
+      <button id="mobile-menu-button" class="lg:hidden flex items-center justify-center w-10 h-10 text-black hover:text-[#F4C430] transition-colors" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <!-- Navigation Menu - Centered (Desktop Only) -->
+      <ul class="hidden lg:flex gap-8 list-none m-0 p-0 text-base absolute left-1/2 transform -translate-x-1/2">
+        <li><a href="/" class="text-black hover:text-accent transition-colors font-semibold">Home</a></li>
+        <li><a href="/about" class="text-black hover:text-accent transition-colors font-semibold">About</a></li>
+        
+        <li class="relative group">
+          <a href="/services" class="text-black hover:text-accent transition-colors font-semibold flex items-center gap-1">
+            Services
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+        </li>
+        
+        <li class="relative group service-area-nav">
+          <a href="/location" class="text-black hover:text-accent transition-colors font-semibold flex items-center gap-1">
+            Service Area
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+        </li>
+        
+        <li><a href="/contact" class="text-black hover:text-accent transition-colors font-semibold">Contact</a></li>
+      </ul>
+      
+      <!-- Call Now Button -->
+      <a href="tel:+12345678912" class="hidden lg:inline-flex items-center gap-2 bg-[#F4C430] text-black font-bold px-6 py-2 hover:bg-[#e5b52a] transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-glow relative overflow-hidden border-2 border-black">
+        <span class="absolute inset-0 bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
+        <svg class="w-5 h-5 animate-ring relative z-10" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        <span class="flex flex-col items-start relative z-10">
+          <span class="font-semibold" style="font-size: 11px;">Call Now</span>
+          <span class="font-bold" style="font-size: 14px;">+(234) 567 8912</span>
+        </span>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Services Dropdown - Aligned with Nav Menu -->
+  <div class="absolute bg-white border-b border-gray-200 py-6 px-8 opacity-0 invisible transition-all duration-200 shadow-lg z-[110] services-dropdown rounded-b-lg" style="top: 100%;">
+    <div class="grid grid-cols-4 gap-8">
+      {serviceCategories.map((category) => (
+        <div>
+          <a href={category.href} class="text-black font-bold mb-3 pb-2 border-b-2 border-[#F4C430] whitespace-nowrap inline-block hover:text-[#F4C430] transition-colors">{category.title}</a>
+          <ul class="space-y-2 mt-3">
+            {category.services.map((service) => (
+              <li>
+                <a href={service.href} class="block text-gray-700 hover:text-accent transition-colors" style="font-size: 14px;">
+                  {service.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Service Area Dropdown -->
+  <div class="absolute bg-white shadow-lg opacity-0 invisible transition-all duration-200 min-w-[200px] z-[110] service-area-dropdown rounded-b-lg overflow-hidden" style="top: 100%;">
+    {serviceAreas.map((area) => (
+      <a href={area.href} class="block px-6 py-3 text-black font-semibold hover:bg-gray-50 hover:text-[#F4C430] transition-all border-b border-gray-100 last:border-b-0" style="font-size: 14px;">
+        {area.name}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script is:inline>
+  // Dropdown hover handlers with dynamic positioning
+  document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('nav');
+    const navContainer = document.querySelector('nav > div');
+    const servicesLink = document.querySelector('nav ul li:nth-child(3)');
+    const servicesDropdown = document.querySelector('.services-dropdown');
+    const serviceAreaLink = document.querySelector('.service-area-nav');
+    const serviceAreaDropdown = document.querySelector('.service-area-dropdown');
+    
+    // Position dropdowns
+    function positionDropdowns() {
+      if (servicesDropdown && navContainer) {
+        const containerRect = navContainer.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        
+        // Services dropdown: from logo to call button (full container width)
+        const containerLeftOffset = containerRect.left - navRect.left;
+        const containerWidth = containerRect.width;
+        servicesDropdown.style.left = containerLeftOffset + 'px';
+        servicesDropdown.style.width = containerWidth + 'px';
+      }
+      
+      if (serviceAreaLink && serviceAreaDropdown) {
+        const linkRect = serviceAreaLink.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        
+        // Service Area dropdown: positioned below the link
+        const leftOffset = linkRect.left - navRect.left;
+        serviceAreaDropdown.style.left = leftOffset + 'px';
+      }
+    }
+    
+    // Position on load and resize
+    positionDropdowns();
+    window.addEventListener('resize', positionDropdowns);
+    
+    // Services dropdown hover
+    if (servicesLink && servicesDropdown && nav) {
+      servicesLink.addEventListener('mouseenter', () => {
+        servicesDropdown.classList.remove('invisible', 'opacity-0');
+        servicesDropdown.classList.add('visible', 'opacity-100');
+      });
+      
+      servicesLink.addEventListener('mouseleave', (e) => {
+        const rect = servicesDropdown.getBoundingClientRect();
+        const isMovingToDropdown = e.clientY > rect.top;
+        
+        if (!isMovingToDropdown) {
+          setTimeout(() => {
+            if (!servicesDropdown.matches(':hover')) {
+              servicesDropdown.classList.add('invisible', 'opacity-0');
+              servicesDropdown.classList.remove('visible', 'opacity-100');
+            }
+          }, 100);
+        }
+      });
+      
+      servicesDropdown.addEventListener('mouseenter', () => {
+        servicesDropdown.classList.remove('invisible', 'opacity-0');
+        servicesDropdown.classList.add('visible', 'opacity-100');
+      });
+      
+      servicesDropdown.addEventListener('mouseleave', () => {
+        servicesDropdown.classList.add('invisible', 'opacity-0');
+        servicesDropdown.classList.remove('visible', 'opacity-100');
+      });
+    }
+    
+    // Service Area dropdown hover
+    if (serviceAreaLink && serviceAreaDropdown && nav) {
+      serviceAreaLink.addEventListener('mouseenter', () => {
+        serviceAreaDropdown.classList.remove('invisible', 'opacity-0');
+        serviceAreaDropdown.classList.add('visible', 'opacity-100');
+      });
+      
+      serviceAreaLink.addEventListener('mouseleave', (e) => {
+        const rect = serviceAreaDropdown.getBoundingClientRect();
+        const isMovingToDropdown = e.clientY > rect.top;
+        
+        if (!isMovingToDropdown) {
+          setTimeout(() => {
+            if (!serviceAreaDropdown.matches(':hover')) {
+              serviceAreaDropdown.classList.add('invisible', 'opacity-0');
+              serviceAreaDropdown.classList.remove('visible', 'opacity-100');
+            }
+          }, 100);
+        }
+      });
+      
+      serviceAreaDropdown.addEventListener('mouseenter', () => {
+        serviceAreaDropdown.classList.remove('invisible', 'opacity-0');
+        serviceAreaDropdown.classList.add('visible', 'opacity-100');
+      });
+      
+      serviceAreaDropdown.addEventListener('mouseleave', () => {
+        serviceAreaDropdown.classList.add('invisible', 'opacity-0');
+        serviceAreaDropdown.classList.remove('visible', 'opacity-100');
+      });
+    }
+  });
+</script>
+
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu" class="lg:hidden hidden bg-white border-b border-gray-200 shadow-lg sticky top-[60px] z-[99]">
+  <div class="max-w-7xl mx-auto px-4 py-4">
+    <!-- Mobile Top Bar Items -->
+    <div class="mb-6 pb-4 border-b border-gray-200 space-y-3">
+      <!-- Email -->
+      <a href="mailto:info@electrixa.com" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-[#F4C430] rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <span class="text-black font-semibold group-hover:text-[#F4C430] transition-colors">info@electrixa.com</span>
+      </a>
+
+      <!-- Location -->
+      <a href="https://www.google.com/maps/search/?api=1&query=Los+Angeles,+CA" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-[#F4C430] rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <span class="text-black font-semibold group-hover:text-[#F4C430] transition-colors">Los Angeles, California</span>
+      </a>
+
+      <!-- Specials -->
+      <a href="/specials" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-[#F4C430] rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+          </svg>
+        </div>
+        <span class="text-black font-semibold group-hover:text-[#F4C430] transition-colors">SPECIALS</span>
+      </a>
+
+      <!-- Financing -->
+      <a href="/financing" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-[#F4C430] rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+          </svg>
+        </div>
+        <span class="text-black font-semibold group-hover:text-[#F4C430] transition-colors">FINANCING</span>
+      </a>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <ul class="space-y-4">
+      <li><a href="/" class="block text-black hover:text-[#F4C430] transition-colors font-semibold text-lg">Home</a></li>
+      <li><a href="/about" class="block text-black hover:text-[#F4C430] transition-colors font-semibold text-lg">About</a></li>
+      
+      <!-- Services Accordion -->
+      <li>
+        <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-black hover:text-[#F4C430] transition-colors font-semibold text-lg">
+          Services
+          <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="mobile-services-menu" class="hidden mt-2 ml-4 space-y-3">
+          {serviceCategories.map((category) => (
+            <div>
+              <a href={category.href} class="block text-[#F4C430] font-bold mb-2">{category.title}</a>
+              <ul class="space-y-1 ml-4">
+                {category.services.map((service) => (
+                  <li>
+                    <a href={service.href} class="block text-gray-700 hover:text-[#F4C430] transition-colors text-sm">
+                      {service.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </li>
+      
+      <!-- Service Area Accordion -->
+      <li>
+        <button id="mobile-areas-toggle" class="w-full flex justify-between items-center text-black hover:text-[#F4C430] transition-colors font-semibold text-lg">
+          Service Area
+          <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="mobile-areas-menu" class="hidden mt-2 ml-4 space-y-2">
+          {serviceAreas.map((area) => (
+            <a href={area.href} class="block text-gray-700 hover:text-[#F4C430] transition-colors">
+              {area.name}
+            </a>
+          ))}
+        </div>
+      </li>
+      
+      <li><a href="/contact" class="block text-black hover:text-[#F4C430] transition-colors font-semibold text-lg">Contact</a></li>
+      
+      <!-- Mobile Call Now Button -->
+      <li class="pt-2">
+        <a href="tel:+12345678912" class="flex items-center justify-center gap-3 w-full bg-[#F4C430] text-black font-bold px-6 py-4 hover:bg-[#e5b52a] transition-all duration-300 hover:scale-105 hover:shadow-xl animate-glow relative overflow-hidden">
+          <span class="absolute inset-0 bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
+          <svg class="w-6 h-6 animate-ring relative z-10" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span class="flex flex-col items-start relative z-10">
+            <span class="font-semibold" style="font-size: 11px;">Call Now</span>
+            <span class="font-bold" style="font-size: 14px;">+(234) 567 8912</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script is:inline>
+  window.addEventListener('load', function() {
+    const topBar = document.getElementById('top-contact-bar');
+    
+    if (topBar) {
+      const handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heroSection = document.getElementById('hero-section');
+        
+        // Get hero section height if it exists
+        let heroHeight = window.innerHeight * 0.9; // Default to 90vh
+        if (heroSection) {
+          heroHeight = heroSection.offsetHeight;
+        } else {
+          // If no hero-section, check for other hero sections
+          const allHeroSections = document.querySelectorAll('section[class*="hero"], section[style*="padding-top: 80px"]');
+          if (allHeroSections.length > 0) {
+            heroHeight = allHeroSections[0].offsetHeight;
+          }
+        }
+        
+        // Keep top bar visible while in hero section
+        // Only hide it after scrolling past the hero section
+        if (scrollTop < heroHeight - 100) {
+          // Still in hero section - keep top bar visible
+          topBar.style.transform = 'translateY(0)';
+          topBar.style.opacity = '1';
+          topBar.style.pointerEvents = 'auto';
+        } else {
+          // Past hero section - hide top bar
+          topBar.style.transform = 'translateY(-100%)';
+          topBar.style.opacity = '0';
+          topBar.style.pointerEvents = 'none';
+        }
+      };
+      
+      // Run on load to set initial state
+      handleScroll();
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+    
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesMenu = document.getElementById('mobile-services-menu');
+    const areasToggle = document.getElementById('mobile-areas-toggle');
+    const areasMenu = document.getElementById('mobile-areas-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = mobileMenuButton.querySelector('svg path');
+        if (icon) {
+          if (mobileMenu.classList.contains('hidden')) {
+            icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+          } else {
+            icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+          }
+        }
+      });
+    }
+    
+    if (servicesToggle && servicesMenu) {
+      servicesToggle.addEventListener('click', () => {
+        servicesMenu.classList.toggle('hidden');
+        const icon = servicesToggle.querySelector('svg');
+        if (icon) icon.classList.toggle('rotate-180');
+      });
+    }
+    
+    if (areasToggle && areasMenu) {
+      areasToggle.addEventListener('click', () => {
+        areasMenu.classList.toggle('hidden');
+        const icon = areasToggle.querySelector('svg');
+        if (icon) icon.classList.toggle('rotate-180');
+      });
+    }
+  });
+</script>
+
+<style>
+  @keyframes ring {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    10%, 30% {
+      transform: rotate(-15deg);
+    }
+    20%, 40% {
+      transform: rotate(15deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(244, 196, 48, 0.5), 0 0 10px rgba(244, 196, 48, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(244, 196, 48, 0.8), 0 0 30px rgba(244, 196, 48, 0.5), 0 0 40px rgba(244, 196, 48, 0.3);
+    }
+  }
+
+  .animate-ring {
+    animation: ring 2s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+</style>
+

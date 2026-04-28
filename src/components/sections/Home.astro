@@ -1,0 +1,200 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+    backgroundImage?: string;
+    subtitle?: string;
+    ctaText?: string;
+    ctaLink?: string;
+}
+
+const {
+    backgroundImage = "https://unsplash.com/photos/man-on-green-galvanized-iron-sheet-holding-green-bar-Lgaw-BnaAAI",
+    subtitle = "Brightening lives with reliable electrical solutions, one connection at a time",
+    ctaText = "EXPLORE NOW",
+    ctaLink = "/contact",
+} = Astro.props;
+---
+
+<section
+    id="hero-section"
+    class="relative w-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800"
+    style="height: 90vh;"
+>
+    <!-- Background Images (Desktop Only) -->
+    <div 
+        data-bg-index="0"
+        class="hidden lg:block absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transition-opacity duration-1000 opacity-100"
+        style="background-image: url('https://images.unsplash.com/photo-1738586069778-13f504c8db57?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+    ></div>
+    <div 
+        data-bg-index="1"
+        class="hidden lg:block absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transition-opacity duration-1000 opacity-0"
+        style="background-image: url('https://images.unsplash.com/photo-1581090602663-f1e82d2ef192?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+    ></div>
+    <div 
+        data-bg-index="2"
+        class="hidden lg:block absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transition-opacity duration-1000 opacity-0"
+        style="background-image: url('https://images.unsplash.com/photo-1543489816-c87b0f5f7dd4?q=80&w=1170&auto=format&fit=crop');"
+    ></div>
+    <div 
+        data-bg-index="3"
+        class="hidden lg:block absolute inset-0 w-full h-full bg-cover bg-center bg-fixed transition-opacity duration-1000 opacity-0"
+        style="background-image: url('https://images.unsplash.com/photo-1626251376234-8bc112f0bcd5?q=80&w=1188&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+    ></div>
+    
+    <!-- Dark Overlay (Desktop Only) -->
+    <div class="hidden lg:block absolute inset-0 bg-black/50"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-1 text-left">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Left Side: Main Content -->
+            <div class="lg:col-span-7">
+                <!-- Pre-Title -->
+                <p class="text-[#F4C430] font-bold text-lg md:text-xl mb-4 tracking-widest opacity-0 animate-[slideInFromLeft_1s_ease-out_forwards]">
+                    TRUSTED ELECTRICAL EXPERTS
+                </p>
+
+                <!-- Main Title -->
+                <h1
+                    class="font-heading font-bold text-white mb-1 tracking-wider opacity-0 animate-[slideInFromLeft_1s_ease-out_0.2s_forwards] text-[60px] xs:text-[30px] sm:text-[30px] md:text-[48px] lg:text-[80px] break-words"
+                    style="line-height: 1.2; max-width: 100%;"
+                >
+                    POWERING YOUR <span id="rotating-word" class="text-[#F4C430] inline-block min-w-[100px] xs:min-w-[150px] md:min-w-[200px] lg:min-w-[250px] text-left transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]"></span>
+                </h1>
+
+                <!-- Subtitle -->
+                {
+                    subtitle && (
+                        <p id="rotating-subtitle" class="text-subtitle font-body text-white mb-10 font-light tracking-wide opacity-0 animate-[slideInFromLeft_1s_ease-out_0.4s_forwards] max-w-2xl transition-opacity duration-500">
+                            {subtitle}
+                        </p>
+                    )
+                }
+
+                <!-- CTA Buttons -->
+                {
+                    ctaText && ctaLink && (
+                        <div class="flex flex-col gap-8">
+                            <!-- Buttons Row -->
+                            <div class="flex flex-col sm:flex-row items-start gap-7 opacity-0 animate-[slideInFromLeft_1s_ease-out_0.6s_forwards]">
+                                <Button href={ctaLink} variant="accent" size="md">
+                                    {ctaText}
+                                </Button>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+
+            <!-- Right Side: Rotating Coupon Cards -->
+            <div class="hidden lg:flex lg:col-span-5 opacity-0 animate-[slideInFromRight_1s_ease-out_0.8s_forwards] items-start justify-center">
+    <div class="relative w-full max-w-lg aspect-[4/3] overflow-visible">
+        
+        <div class="coupon-card absolute inset-0 transition-all duration-700 opacity-100 scale-100" style="transform: rotateY(0deg);" data-coupon-index="0">
+            
+            <div class="relative bg-gradient-to-br from-white via-yellow-50 to-white rounded-xl shadow-2xl flex flex-col justify-center items-center text-center p-8 border-4 border-dashed border-[#F4C430] overflow-hidden animate-[floatCouponWithGlow_4s_ease-in-out_infinite]">
+                
+                <div class="relative z-10 w-full">
+                    <div class="bg-[#F4C430] text-black px-4 py-1 rounded-full inline-block mb-4 shadow-md">
+                        <p class="font-black text-xs tracking-[0.2em]">NEW CUSTOMER SPECIAL</p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-[#F4C430] to-[#FFD700] rounded-2xl p-6 mb-4 shadow-lg ring-4 ring-white/50">
+                        <div class="text-white font-black text-7xl leading-none drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">$50 OFF</div>
+                    </div>
+
+                    <p class="text-black font-bold text-xl mb-6 uppercase tracking-tight">First Service</p>
+
+                    <div class="flex flex-col gap-3 items-center">
+                        <div class="bg-black text-white px-8 py-3 rounded-lg shadow-lg w-full group cursor-pointer hover:bg-zinc-900 transition-colors">
+                            <p class="text-[10px] text-[#F4C430] mb-1 font-bold">PROMO CODE</p>
+                            <p class="text-xl font-black tracking-[0.15em]">ELECTRIXA50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const words = ['HOME', 'BUSINESS', 'FUTURE', 'WORLD'];
+        let currentIndex = 0;
+        const element = document.getElementById('rotating-word');
+        const bgImages = document.querySelectorAll('[data-bg-index]');
+        
+        function rotateWord() {
+            if (element && bgImages.length > 0) {
+                // Calculate next index
+                const nextIndex = (currentIndex + 1) % words.length;
+                
+                // Fade out word with animation
+                element.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+                element.classList.add('opacity-0', '-translate-y-[30px]', 'scale-[0.8]');
+                
+                // Crossfade backgrounds simultaneously
+                bgImages[nextIndex].classList.remove('opacity-0');
+                bgImages[nextIndex].classList.add('opacity-100');
+                bgImages[currentIndex].classList.remove('opacity-100');
+                bgImages[currentIndex].classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    // Update index and word
+                    currentIndex = nextIndex;
+                    element.textContent = words[currentIndex];
+                    
+                    // Fade in word with animation
+                    element.classList.remove('opacity-0', '-translate-y-[30px]', 'scale-[0.8]');
+                    element.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+                }, 500);
+            }
+        }
+        
+        // Set initial word
+        if (element) {
+            element.textContent = words[0];
+            element.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+        }
+        
+        // Rotate every 3 seconds
+        setInterval(rotateWord, 3000);
+    });
+</script>
+
+<style>
+    @keyframes slideInFromRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes floatCoupon {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    @keyframes floatCouponWithGlow {
+        0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 30px rgba(244, 196, 48, 0.4), 0 0 60px rgba(244, 196, 48, 0.3), 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(244, 196, 48, 0.7), 0 0 100px rgba(244, 196, 48, 0.5), 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+    }
+</style>

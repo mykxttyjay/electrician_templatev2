@@ -1,0 +1,55 @@
+---
+---
+
+<div id="floating-offer" class="fixed bottom-8 right-12 z-50 transition-all duration-300">
+  <button 
+    id="floating-offer-btn"
+    class="group relative flex items-center gap-3 bg-gradient-to-r from-[#F4C430] to-[#e5b52a] text-black px-6 py-4 shadow-2xl hover:shadow-[0_20px_60px_rgba(244,196,48,0.6)] transition-all duration-500 hover:from-[#e5b52a] hover:to-[#F4C430] animate-[floatingPulse_2s_ease-in-out_infinite] hover:animate-none overflow-hidden"
+  >
+    <!-- Shimmer effect -->
+    <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+    
+    <!-- Pulsing rings - more visible -->
+    <div class="absolute inset-0 border-4 border-[#F4C430] animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
+    <div class="absolute inset-0 border-2 border-white/50 animate-[ping_2s_ease-in-out_infinite] opacity-75"></div>
+    
+    <div class="relative w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0 shadow-xl group-hover:rotate-[20deg] transition-all duration-500">
+      <!-- Glow effect behind icon -->
+      <div class="absolute inset-0 bg-[#F4C430] rounded-full blur-md opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <svg class="relative w-6 h-6 text-[#F4C430] transition-transform duration-500 animate-[wiggle_1s_ease-in-out_infinite]" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+      </svg>
+    </div>
+    <div class="relative text-left pr-2">
+      <p class="text-black font-black text-xs uppercase tracking-widest mb-0.5 transition-all duration-500">Limited Time</p>
+      <p class="text-black font-black text-lg transition-all duration-500">Get $50 OFF</p>
+    </div>
+    
+    <!-- Sparkle effect - single red dot in upper right corner -->
+    <div class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full animate-[ping_1s_ease-in-out_infinite] opacity-90"></div>
+  </button>
+</div>
+
+<style>
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+</style>
+
+<script>
+  const floatingBtn = document.getElementById('floating-offer-btn');
+  const modal = document.getElementById('offer-modal');
+  
+  floatingBtn?.addEventListener('click', () => {
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+  });
+</script>

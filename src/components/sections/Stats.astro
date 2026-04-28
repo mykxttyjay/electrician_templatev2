@@ -1,0 +1,90 @@
+---
+const stats = [
+  {
+    target: 500,
+    label: "Projects Completed",
+    showDivider: true
+  },
+  {
+    target: 350,
+    label: "Happy Clients",
+    showDivider: true
+  },
+  {
+    target: 20,
+    label: "Years Experience",
+    showDivider: true
+  },
+  {
+    target: 4.9,
+    label: "Client Rating",
+    isDecimal: true,
+    showDivider: false
+  }
+];
+---
+
+<section class="bg-[#1a1a1a] py-16 px-4 sm:px-6 lg:px-8" id="stats-section">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {stats.map((stat) => (
+        <div class="text-center relative">
+          {stat.showDivider && (
+            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-20 bg-white hidden md:block"></div>
+          )}
+          <h3 class="text-5xl font-bold text-[#F4C430] mb-2">
+            <span 
+              class="counter" 
+              data-target={stat.target}
+              data-decimal={stat.isDecimal ? "true" : "false"}
+            >
+              0
+            </span>{stat.isDecimal ? '' : '+'}
+          </h3>
+          <p class="text-white text-lg">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function animateCounter(element: HTMLElement) {
+    const target = parseFloat(element.getAttribute('data-target') || '0');
+    const isDecimal = element.getAttribute('data-decimal') === 'true';
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        element.textContent = isDecimal ? current.toFixed(1) : Math.floor(current).toString();
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = isDecimal ? target.toFixed(1) : target.toString();
+      }
+    };
+
+    updateCounter();
+  }
+
+  // Intersection Observer to trigger animation when section is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counters = entry.target.querySelectorAll('.counter');
+        counters.forEach((counter) => {
+          animateCounter(counter as HTMLElement);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Wait for DOM to be ready
+  const statsSection = document.getElementById('stats-section');
+  if (statsSection) {
+    observer.observe(statsSection);
+  }
+</script>

@@ -1,0 +1,257 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="mb-12 text-center maintenance-header">
+      <div class="flex items-center justify-center gap-2">
+        <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+        </svg>
+        <p class="text-[#F4C430] font-semibold text-lg">Maintenance Plan</p>
+      </div>
+      <h2 class="heading-h2 font-bold text-black mb-3">Protect Your Investment</h2>
+      <p class="text-gray-700 leading-relaxed max-w-3xl mx-auto text-subtitle">
+        Keep your electrical systems running smoothly with our comprehensive maintenance plans
+      </p>
+    </div>
+
+    <!-- Plans Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Basic Plan -->
+      <div class="bg-[#F8F8F8] p-8 rounded-lg border-2 border-gray-300 hover:border-[#F4C430] transition-all duration-300 maintenance-card flex flex-col">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-black mb-2">Basic Plan</h3>
+          <div class="text-4xl font-black text-[#F4C430] mb-2">$99</div>
+          <p class="text-gray-600">per year</p>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Annual electrical inspection</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Priority scheduling</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">10% discount on repairs</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Safety report included</span>
+          </li>
+        </ul>
+        <div class="mt-auto">
+          <Button 
+            variant="coupon"
+            size="md"
+            href="/contact"
+            class="w-full py-3"
+          >
+            Get Started
+          </Button>
+        </div>
+      </div>
+
+      <!-- Premium Plan (Featured) -->
+      <div class="bg-[#1a1a1a] p-8 rounded-lg border-4 border-[#F4C430] relative transform md:scale-105 maintenance-card flex flex-col">
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#F4C430] text-black px-6 py-1 font-bold text-sm">
+          MOST POPULAR
+        </div>
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-white mb-2">Premium Plan</h3>
+          <div class="text-4xl font-black text-[#F4C430] mb-2">$199</div>
+          <p class="text-gray-300">per year</p>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-white">Bi-annual inspections</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-white">24/7 priority service</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-white">20% discount on repairs</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-white">Free emergency callouts</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-white">Extended warranty coverage</span>
+          </li>
+        </ul>
+        <div class="mt-auto">
+          <Button 
+            variant="couponWhite"
+            size="md"
+            href="/contact"
+            class="w-full py-3"
+          >
+            Get Started
+          </Button>
+        </div>
+      </div>
+
+      <!-- Professional Plan -->
+      <div class="bg-[#F8F8F8] p-8 rounded-lg border-2 border-gray-300 hover:border-[#F4C430] transition-all duration-300 maintenance-card flex flex-col">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-black mb-2">Professional Plan</h3>
+          <div class="text-4xl font-black text-[#F4C430] mb-2">$349</div>
+          <p class="text-gray-600">per year</p>
+        </div>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Quarterly inspections</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">VIP priority service</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">30% discount on repairs</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Unlimited emergency calls</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Dedicated account manager</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-[#F4C430] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+            <span class="text-gray-700">Premium warranty coverage</span>
+          </li>
+        </ul>
+        <div class="mt-auto">
+          <Button 
+            variant="coupon"
+            size="md"
+            href="/contact"
+            class="w-full py-3"
+          >
+            Get Started
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Banner -->
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-gray-600">
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-base">Get 30 day free trial</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-base">No any hidden fees pay</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-base">You can cancel anytime</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .maintenance-header {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .maintenance-card {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .maintenance-card.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .maintenance-card:nth-child(1).animate {
+    animation-delay: 0.2s;
+  }
+
+  .maintenance-card:nth-child(2).animate {
+    animation-delay: 0.4s;
+  }
+
+  .maintenance-card:nth-child(3).animate {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const maintenanceObserverOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const maintenanceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        maintenanceObserver.unobserve(entry.target);
+      }
+    });
+  }, maintenanceObserverOptions);
+
+  document.querySelectorAll('.maintenance-card').forEach(card => {
+    maintenanceObserver.observe(card);
+  });
+</script>

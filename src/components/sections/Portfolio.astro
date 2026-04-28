@@ -1,0 +1,220 @@
+---
+import PortfolioCard from '../ui/PortfolioCard.astro';
+
+const projects = [
+  {
+    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=1169&auto=format&fit=crop',
+    title: 'Residential Wiring Installation',
+    category: 'Residential'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=1170&auto=format&fit=crop',
+    title: 'Commercial Panel Upgrade',
+    category: 'Commercial'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1170&auto=format&fit=crop',
+    title: 'Industrial Electrical Systems',
+    category: 'Industrial'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1170&auto=format&fit=crop',
+    title: 'Emergency Power Solutions',
+    category: 'Emergency'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1170&auto=format&fit=crop',
+    title: 'Smart Home Integration',
+    category: 'Smart Home'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1170&auto=format&fit=crop',
+    title: 'Lighting Installation',
+    category: 'Lighting'
+  }
+];
+---
+
+<section class="bg-white py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-12 portfolio-header opacity-0">
+      <p class="text-[#F4C430] font-semibold text-[18px] mb-2 flex items-center justify-center gap-3">
+        <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+        </svg>
+        Recent Projects
+      </p>
+      <h2 class="heading-h2 font-bold text-black">Our Electrical Work Speaks for Itself</h2>
+    </div>
+  </div>
+
+  <!-- Full Width Carousel Container -->
+  <div class="relative portfolio-carousel opacity-0">
+    <div class="overflow-hidden">
+      <div class="portfolio-track flex transition-transform duration-500 ease-in-out gap-3 px-3">
+        {projects.map((project) => (
+          <PortfolioCard 
+            image={project.image}
+            title={project.title}
+            category={project.category}
+          />
+        ))}
+        <!-- Duplicate slides for infinite loop -->
+        {projects.map((project) => (
+          <PortfolioCard 
+            image={project.image}
+            title={project.title}
+            category={project.category}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="portfolio-prev hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-[#F4C430] rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-[#F4C430] transition-all duration-300 z-10">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <button class="portfolio-next hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-[#F4C430] rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-[#F4C430] transition-all duration-300 z-10">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  .portfolio-header {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .portfolio-carousel {
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const portfolioObserverOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const portfolioObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        portfolioObserver.unobserve(entry.target);
+      }
+    });
+  }, portfolioObserverOptions);
+
+  const portfolioHeader = document.querySelector('.portfolio-header');
+  const portfolioCarousel = document.querySelector('.portfolio-carousel');
+  
+  if (portfolioHeader) portfolioObserver.observe(portfolioHeader);
+  if (portfolioCarousel) portfolioObserver.observe(portfolioCarousel);
+
+  // Carousel functionality
+  const track = document.querySelector('.portfolio-track') as HTMLElement;
+  const slides = document.querySelectorAll('.portfolio-slide');
+  const prevBtn = document.querySelector('.portfolio-prev');
+  const nextBtn = document.querySelector('.portfolio-next');
+  
+  let currentIndex = 0;
+  const totalSlides = slides.length / 2; // Actual number of unique slides
+  let slideWidth = 0;
+  
+  // Calculate exact slide width including gap
+  function calculateSlideWidth() {
+    requestAnimationFrame(() => {
+      const firstSlide = slides[0] as HTMLElement;
+      const trackStyle = window.getComputedStyle(track);
+      const gap = parseInt(trackStyle.gap) || 20;
+      slideWidth = firstSlide.offsetWidth + gap;
+    });
+  }
+  
+  // Initialize on load
+  window.addEventListener('load', calculateSlideWidth);
+  
+  // Recalculate on window resize with debounce
+  let resizeTimeout: number;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(() => {
+      calculateSlideWidth();
+      updateCarousel(false);
+    }, 150);
+  });
+  
+  function updateCarousel(smooth = true) {
+    if (smooth) {
+      track.style.transition = 'transform 500ms ease-in-out';
+    } else {
+      track.style.transition = 'none';
+    }
+    
+    const offset = -(currentIndex * slideWidth);
+    track.style.transform = `translateX(${offset}px)`;
+  }
+  
+  function nextSlide() {
+    currentIndex++;
+    updateCarousel(true);
+    
+    // Reset to beginning when reaching duplicates
+    if (currentIndex >= totalSlides) {
+      setTimeout(() => {
+        currentIndex = 0;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+  
+  function prevSlide() {
+    if (currentIndex === 0) {
+      currentIndex = totalSlides;
+      updateCarousel(false);
+      setTimeout(() => {
+        currentIndex--;
+        updateCarousel(true);
+      }, 20);
+    } else {
+      currentIndex--;
+      updateCarousel(true);
+    }
+  }
+  
+  // Button navigation
+  nextBtn?.addEventListener('click', nextSlide);
+  prevBtn?.addEventListener('click', prevSlide);
+  
+  // Auto-play carousel
+  let autoplayInterval = setInterval(nextSlide, 3000);
+  
+  // Pause on hover
+  const carousel = document.querySelector('.portfolio-carousel');
+  carousel?.addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+  });
+  
+  carousel?.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(nextSlide, 3000);
+  });
+</script>
