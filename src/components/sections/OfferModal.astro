@@ -1,7 +1,12 @@
 ---
+interface Props {
+  showOnLoad?: boolean;
+}
+
+const { showOnLoad = false } = Astro.props;
 ---
 
-<div id="offer-modal" class="fixed inset-0 backdrop-blur-lg bg-black/50 z-[100] hidden items-center justify-center p-4">
+<div id="offer-modal" class="fixed inset-0 backdrop-blur-lg bg-black/50 z-[100] hidden items-center justify-center p-4" data-show-on-load={showOnLoad}>
   <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden relative animate-fade-in shadow-2xl">
     <!-- Close Button -->
     <button 
@@ -166,15 +171,19 @@
   // Start countdown when page loads
   startCountdown();
   
-  // Show modal after 3 seconds on page load (only once)
+  // Show modal after 3 seconds on page load (only once and only if enabled)
+  const showOnLoad = modal?.dataset.showOnLoad === 'true';
   let modalShown = false;
-  setTimeout(() => {
-    if (modal && !modalShown) {
-      modalShown = true;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-  }, 3000);
+  
+  if (showOnLoad) {
+    setTimeout(() => {
+      if (modal && !modalShown) {
+        modalShown = true;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }, 3000);
+  }
   
   // Close modal handler
   function closeModal() {
