@@ -5,7 +5,10 @@ import Hero2 from "../components/sections/Hero2.astro";
 import AboutSection from "../components/sections/About.astro";
 import Services from "../components/sections/Services.astro";
 import Stats from "../components/sections/Stats.astro";
-import FAQ from "../components/sections/FAQ.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import { parseFaqMarkdown } from '../utils/faqParser.js';
+
+const faqData = await parseFaqMarkdown('general.md');
 import Location from "../components/sections/Location.astro";
 import Footer from "../components/sections/Footer.astro";
 import FloatingOffer from "../components/sections/FloatingOffer.astro";
@@ -21,7 +24,7 @@ import OfferModal from "../components/sections/OfferModal.astro";
     <AboutSection />
     <Services />
     <Stats />
-    <FAQ />
+    <FAQ faqData={faqData} />
     <Location />
     <Footer />
     <FloatingOffer />
