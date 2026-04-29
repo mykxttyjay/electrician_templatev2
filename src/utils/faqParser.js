@@ -1,6 +1,6 @@
 export async function parseFaqMarkdown(filename) {
   // Import the markdown file dynamically
-  const modules = import.meta.glob('/src/content/faqs/*.md', { as: 'raw' });
+  const modules = import.meta.glob('/src/content/faqs/*.md', { query: '?raw', import: 'default' });
   const path = `/src/content/faqs/${filename}`;
   
   if (!modules[path]) {

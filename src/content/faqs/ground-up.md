@@ -20,11 +20,11 @@ Ideally, involve us during the design phase before construction begins. Early in
 
 ## Do you provide design services?
 
-Yes, we provide comprehensive electrical design services including load calculations, panel sizing, circuit layouts, lighting design, and code compliance reviews. We work closely with architects and engineers to create efficient, safe electrical systems.
+Yes, we provide comprehensive design services including load calculations, panel sizing, circuit layouts, lighting design, and code compliance reviews. We work closely with architects and engineers to create efficient, safe systems.
 
 ## What permits are required?
 
-New construction requires electrical permits from local authorities and multiple inspections throughout the project (rough-in, final, etc.). We handle all permit applications, coordinate inspections, and ensure full code compliance at every stage.
+New construction requires electrical permits from authorities and multiple inspections throughout the project (rough-in, final, etc.). We handle permit applications, coordinate inspections, and ensure full code compliance at every stage.
 
 ## How do you coordinate with contractors?
 
@@ -32,4 +32,4 @@ We maintain close communication with general contractors, HVAC, plumbing, and ot
 
 ## What is the typical project timeline?
 
-Timelines vary by project size. Small commercial buildings may take 4-8 weeks for electrical work, while larger projects can take several months. We provide detailed schedules and work efficiently to meet construction deadlines without compromising quality.
+Timelines vary by project size. Small buildings may take 4-8 weeks for electrical work, while larger projects can take several months. We provide schedules and work efficiently to meet construction deadlines without compromising quality.
