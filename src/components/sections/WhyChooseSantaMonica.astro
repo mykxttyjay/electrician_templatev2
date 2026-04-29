@@ -4,7 +4,7 @@ const services = [
   {
     number: '01',
     title: 'Local Santa Monica Team',
-    description: 'Our electricians live and work in Santa Monica, providing fast response times and understanding of local building codes and regulations.',
+    description: 'Our experienced electricians live and work in Santa Monica, providing fast response times and deep understanding of all local building codes and safety regulations.',
     align: 'left'
   },
   {
@@ -16,7 +16,7 @@ const services = [
   {
     number: '03',
     title: 'Same-Day Service',
-    description: 'Emergency electrical services with rapid response throughout Santa Monica. We prioritize urgent calls and offer flexible scheduling.',
+    description: 'Emergency electrical services with rapid response throughout Santa Monica. We always prioritize urgent calls and offer flexible scheduling options.',
     align: 'left'
   },
   {
@@ -28,13 +28,13 @@ const services = [
   {
     number: '05',
     title: 'Smart Home Integration',
-    description: 'Expert installation of smart home systems, EV chargers, and energy-efficient solutions perfect for Santa Monica\'s eco-conscious community.',
+    description: 'Expert installation of advanced smart home systems, EV chargers, and energy-efficient solutions perfect for Santa Monica\'s eco-conscious community.',
     align: 'right'
   },
   {
     number: '06',
     title: 'Transparent Pricing',
-    description: 'Upfront, honest pricing with detailed free estimates before we start. No hidden fees or surprise charges for Santa Monica residents.',
+    description: 'Upfront, honest pricing with detailed free estimates before we start. No hidden fees or unexpected surprise charges for Santa Monica residents guaranteed.',
     align: 'right'
   }
 ];
@@ -43,7 +43,7 @@ const leftServices = services.filter(s => s.align === 'left');
 const rightServices = services.filter(s => s.align === 'right');
 ---
 
-<section class="relative bg-[#F8F8F8] pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+<section class="relative bg-white pt-12 pb-20 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <!-- Section Header -->
     <div class="text-center mb-12">
@@ -54,7 +54,7 @@ const rightServices = services.filter(s => s.align === 'right');
         Local Expertise
       </p>
       <h2 class="heading-h2 font-bold text-black mb-4" style="font-size: 63px; white-space: nowrap;">
-        Why Choose Our Santa Monica Services
+        Why Choose Santa Monica Services
       </h2>
       <p class="text-gray-700 leading-relaxed max-w-5xl mx-auto text-subtitle mb-20">
         We understand Santa Monica's unique electrical needs, from coastal properties to modern smart homes. Our local expertise ensures reliable, code-compliant solutions.
@@ -62,16 +62,16 @@ const rightServices = services.filter(s => s.align === 'right');
     </div>
 
     <!-- Three Column Layout: Left Services - Center Image - Right Services -->
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-5 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] lg:gap-1 items-start">
       <!-- Left Column - Services 01-03 -->
       <div class="space-y-12">
         {leftServices.map((service) => (
-          <div class="flex gap-4">
+          <div class="flex">
             <div class="flex-shrink-0">
               <span class="text-[#F4C430] font-bold text-3xl">{service.number}.</span>
             </div>
-            <div>
-              <h3 class="font-bold text-black mb-2" style="font-size: 25px;">{service.title}</h3>
+            <div class="ml-3">
+              <h3 class="font-bold text-black" style="font-size: 25px;">{service.title}</h3>
               <p class="text-gray-600 leading-relaxed text-base">
                 {service.description}
               </p>
@@ -81,7 +81,7 @@ const rightServices = services.filter(s => s.align === 'right');
       </div>
 
       <!-- Center Image -->
-      <div class="flex justify-center lg:mx-4">
+      <div class="flex justify-center lg:mx-2">
         <img 
           src="/lights.png" 
           alt="Modern Electrical Pendant Lighting" 
@@ -92,9 +92,9 @@ const rightServices = services.filter(s => s.align === 'right');
       <!-- Right Column - Services 04-06 -->
       <div class="space-y-12">
         {rightServices.map((service) => (
-          <div class="flex gap-4">
-            <div>
-              <h3 class="font-bold text-black mb-2 text-right" style="font-size: 25px;">{service.title}</h3>
+          <div class="flex">
+            <div class="mr-3">
+              <h3 class="font-bold text-black text-right" style="font-size: 25px;">{service.title}</h3>
               <p class="text-gray-600 leading-relaxed text-base text-right">
                 {service.description}
               </p>

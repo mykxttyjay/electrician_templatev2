@@ -56,7 +56,7 @@ const serviceCategories = [
 <section id="services" class="bg-[#F8F8F8] py-20 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <!-- Section Header -->
-    <div class="mb-12 text-center services-header">
+    <div class="mb-4 text-center opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]">
       <p class="text-[#e5b52a] font-semibold mb-2 text-lg flex items-center justify-center gap-2">
         <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
@@ -70,10 +70,10 @@ const serviceCategories = [
     </div>
 
     <!-- Service Category Tabs -->
-    <div class="flex flex-wrap gap-6 mb-10 justify-center services-tabs">
+    <div class="flex flex-wrap gap-6 mb-13 justify-center opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
       {serviceCategories.map((category, index) => (
         <button
-          class={`service-tab group relative px-10 py-5 rounded-lg transition-all duration-300 shadow-md ${index === 0 ? 'active bg-gradient-to-r from-[#F4C430] to-[#e5b52a] text-black' : 'bg-white text-gray-700 border-2 border-gray-200'} hover:bg-gradient-to-r hover:from-[#F4C430] hover:to-[#e5b52a] hover:text-black hover:border-transparent`}
+          class={`service-tab group relative px-10 py-5 rounded-lg transition-all duration-300 shadow-md opacity-0 translate-y-5 ${index === 0 ? 'active bg-gradient-to-r from-[#F4C430] to-[#e5b52a] text-black animate-[fadeInUp_0.6s_ease-out_0.3s_forwards]' : index === 1 ? 'bg-white text-gray-700 border-2 border-gray-200 animate-[fadeInUp_0.6s_ease-out_0.4s_forwards]' : index === 2 ? 'bg-white text-gray-700 border-2 border-gray-200 animate-[fadeInUp_0.6s_ease-out_0.5s_forwards]' : 'bg-white text-gray-700 border-2 border-gray-200 animate-[fadeInUp_0.6s_ease-out_0.6s_forwards]'} hover:bg-gradient-to-r hover:from-[#F4C430] hover:to-[#e5b52a] hover:text-black hover:border-transparent`}
           data-category={category.id}
           data-index={index}
         >
@@ -92,7 +92,7 @@ const serviceCategories = [
         data-category={category.id}
       >
         <!-- Top: Description (Centered) -->
-        <div class="text-center mb-10">
+        <div class="text-center mb-3">
           <h3 class="text-3xl font-bold text-black mb-6">{category.title}</h3>
           <p class="text-gray-700 text-base leading-relaxed max-w-5xl mx-auto">{category.description}</p>
         </div>
@@ -100,7 +100,15 @@ const serviceCategories = [
         <!-- Bottom: 4 Services in 1 Row -->
         <div class="grid grid-cols-4 gap-6 services-grid">
           {category.services.map((service, serviceIndex) => (
-            <div data-service-index={serviceIndex}>
+            <div 
+              data-service-index={serviceIndex}
+              class={`opacity-0 translate-y-[30px] ${
+                serviceIndex === 0 ? 'animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]' :
+                serviceIndex === 1 ? 'animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]' :
+                serviceIndex === 2 ? 'animate-[fadeInUp_0.8s_ease-out_0.3s_forwards]' :
+                'animate-[fadeInUp_0.8s_ease-out_0.4s_forwards]'
+              }`}
+            >
               <ServiceCard 
                 name={service.name} 
                 image={service.image} 
@@ -116,98 +124,7 @@ const serviceCategories = [
   </div>
 </section>
 
-<style>
-  .services-header {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .services-tabs {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-  }
-
-  .service-tab {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .services-tabs.animate .service-tab {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .service-tab[data-index="0"] {
-    animation-delay: 0.3s;
-  }
-
-  .service-tab[data-index="1"] {
-    animation-delay: 0.4s;
-  }
-
-  .service-tab[data-index="2"] {
-    animation-delay: 0.5s;
-  }
-
-  .service-tab[data-index="3"] {
-    animation-delay: 0.6s;
-  }
-
-  .services-grid > div {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .services-grid.animate > div {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .services-grid.animate > div[data-service-index="0"] {
-    animation-delay: 0.1s;
-  }
-
-  .services-grid.animate > div[data-service-index="1"] {
-    animation-delay: 0.2s;
-  }
-
-  .services-grid.animate > div[data-service-index="2"] {
-    animation-delay: 0.3s;
-  }
-
-  .services-grid.animate > div[data-service-index="3"] {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-
 <script>
-  // Intersection Observer for scroll animations
-  const servicesObserverOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const servicesObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        servicesObserver.unobserve(entry.target);
-      }
-    });
-  }, servicesObserverOptions);
-
-  // Observe services elements
-  const servicesTabs = document.querySelector('.services-tabs');
-  const servicesGrids = document.querySelectorAll('.services-grid');
-  
-  if (servicesTabs) servicesObserver.observe(servicesTabs);
-  servicesGrids.forEach(grid => servicesObserver.observe(grid));
-
   // Tab functionality
   const tabs = document.querySelectorAll('.service-tab');
   const contents = document.querySelectorAll('.service-content');
@@ -244,13 +161,31 @@ const serviceCategories = [
         selectedContent.classList.remove('hidden');
         
         // Re-trigger animation for the newly visible grid
-        const newGrid = selectedContent.querySelector('.services-grid');
-        if (newGrid) {
-          newGrid.classList.remove('animate');
-          // Use requestAnimationFrame to batch DOM operations
-          requestAnimationFrame(() => {
+        const serviceCards = selectedContent.querySelectorAll('[data-service-index]');
+        if (serviceCards.length > 0) {
+          serviceCards.forEach((card, index) => {
+            // Remove existing animation classes
+            card.classList.remove(
+              'animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]',
+              'animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]',
+              'animate-[fadeInUp_0.8s_ease-out_0.3s_forwards]',
+              'animate-[fadeInUp_0.8s_ease-out_0.4s_forwards]'
+            );
+            
+            // Reset to initial state
+            card.classList.add('opacity-0', 'translate-y-[30px]');
+            
+            // Use requestAnimationFrame to batch DOM operations and re-trigger animation
             requestAnimationFrame(() => {
-              newGrid.classList.add('animate');
+              requestAnimationFrame(() => {
+                const delays = [
+                  'animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]',
+                  'animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]',
+                  'animate-[fadeInUp_0.8s_ease-out_0.3s_forwards]',
+                  'animate-[fadeInUp_0.8s_ease-out_0.4s_forwards]'
+                ];
+                card.classList.add(delays[index] || delays[3]);
+              });
             });
           });
         }
