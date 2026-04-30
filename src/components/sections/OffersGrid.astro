@@ -1,8 +1,10 @@
 ---
 ---
 
-<section class="bg-gray-100 py-20 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
+<section class="relative bg-gray-100 py-20 px-4 sm:px-6 lg:px-8 offers-section-bg">
+  
+  <!-- Content -->
+  <div class="max-w-7xl mx-auto relative z-10">
     <!-- Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
       <!-- Maintenance Plan Card (Left - Smaller) -->
@@ -184,3 +186,23 @@
     </div>
   </div>
 </section>
+
+
+<style>
+  .offers-section-bg {
+    overflow: hidden;
+  }
+  
+  .offers-section-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/lightbulb-pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+  }
+</style>
