@@ -13,6 +13,7 @@ import FloatingSideButtons from '../components/sections/FloatingSideButtons.astr
 import OfferModal from '../components/sections/OfferModal.astro';
 import RelatedServices from '../components/sections/RelatedServices.astro';
 import OffersGrid from '../components/sections/OffersGrid.astro';
+import Services from '../components/sections/Services.astro';
 import { parseFaqMarkdown } from '../utils/faqParser.js';
 
 const faqData = await parseFaqMarkdown('commercial.md');
@@ -133,16 +134,97 @@ const allServiceData = {
   />
 
   <TrustBadges />
-  <ServiceDetailSection 
-    image={serviceDetailData.image}
-    imageAlt={serviceDetailData.imageAlt}
-    title={serviceDetailData.title}
-    description={serviceDetailData.description}
-    services={serviceCategories}
-    serviceCards={allServiceData['Commercial Electrical'].cards}
-    allServiceData={allServiceData}
-  />
+  
+  <!-- Commercial Electrical Overview Section -->
+  <section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Top Section: Image and Text Side by Side -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-4">
+        <!-- Left Side: Image -->
+        <div class="relative">
+          <div class="overflow-hidden shadow-xl rounded-lg">
+            <img 
+              src={serviceDetailData.image}
+              alt={serviceDetailData.imageAlt}
+              class="w-full h-[560px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
 
+        <!-- Right Side: Content -->
+        <div class="space-y-6">
+          <div>
+            <p class="text-[#F4C430] font-semibold mb-2 flex items-center gap-2 text-lg tracking-wide">
+              <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+              </svg>
+              Who We Are
+            </p>
+            <h2 class="font-bold text-black mb-6 leading-tight" style="font-size: 63px;">
+              Commercial Power Solutions
+            </h2>
+            <p class="text-gray-600 leading-relaxed text-lg mb-6">
+              We provide comprehensive electrical services for businesses of all sizes, from simple repairs to complex installations. Our experienced team ensures minimal disruption while delivering reliable solutions that keep your operations running smoothly and efficiently.
+            </p>
+          </div>
+
+          <!-- Feature Items -->
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 border-2 border-[#F4C430] flex items-center justify-center">
+                  <svg class="w-8 h-8 text-[#F4C430]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-black mb-2">Complete Infrastructure</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Full electrical system design, installation, and maintenance for commercial buildings and facilities.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 border-2 border-[#F4C430] flex items-center justify-center">
+                  <svg class="w-8 h-8 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-black mb-2">24/7 Emergency Service</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Reliable backup power systems and emergency electrical services to keep your business running.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <Services />
   <OffersGrid />
   <RelatedServices services={relatedServices} />
   <FAQ faqData={faqData} />
