@@ -12,7 +12,7 @@ stat2Label: "Years Experience"
 
 ## What does ground-up construction include?
 
-Ground-up electrical construction includes complete electrical system design, power distribution planning, panel installation, conduit and wiring systems, lighting layouts, outlet placement, data/communication infrastructure, and coordination with other trades from foundation to final inspection.
+Ground-up electrical construction includes complete system design, power distribution planning, panel installation, conduit and wiring systems, lighting layouts, outlet placement, data/communication infrastructure, and coordination with other trades from foundation to final inspection.
 
 ## When should I involve an electrician?
 

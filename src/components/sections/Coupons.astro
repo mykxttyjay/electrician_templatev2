@@ -52,7 +52,7 @@ const coupons = [
   <div class="max-w-7xl mx-auto">
     <!-- Section Header -->
     <div class="mb-6 text-center opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]">
-      <div class="flex items-center justify-center gap-2 mb-1">
+      <div class="flex items-center justify-center gap-2">
         <svg class="w-5 h-5 text-[#F4C430]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
         </svg>
@@ -67,7 +67,7 @@ const coupons = [
     <!-- Coupons Grid -->
     <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-6 mb-8">
       {coupons.map((coupon, index) => (
-      <div class={`${coupon.bgClass} relative overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 border-2 border-dashed ${index === 1 ? 'border-black md:scale-110 md:z-10' : 'border-[#F4C430] md:mt-8'} rounded-lg w-full md:w-1/2 md:flex-shrink coupon-card opacity-0 translate-y-[30px]`} data-index={index}>
+      <div class={`${coupon.bgClass} relative overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 border-2 border-dashed ${index === 1 ? 'border-[#F4C430] md:scale-110 md:z-10' : 'border-[#F4C430] md:mt-8'} rounded-lg w-full md:w-1/2 md:flex-shrink coupon-card opacity-0 translate-y-[30px]`} data-index={index}>
         
         <!-- Diagonal Ribbon Banner -->
         <div class={`absolute top-8 -right-12 w-48 transform rotate-45 z-20 shadow-lg ${index === 1 ? 'bg-black' : index === 0 || index === 2 ? 'bg-black' : 'bg-[#F4C430]'}`}>
@@ -91,7 +91,7 @@ const coupons = [
         </div>
 
         <!-- Dashed Divider -->
-        <div class={`border-t-2 ${index === 1 ? 'border-black' : 'border-[#F4C430]'} border-dashed mx-6`}></div>
+        <div class={`border-t-2 border-[#F4C430] border-dashed mx-6`}></div>
 
         <!-- Bottom Section with Discount -->
         <div class="p-6 pt-4">
